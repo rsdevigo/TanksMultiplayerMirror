@@ -1,0 +1,95 @@
+Estados do Jogo
+Não conectado (d1)
+Esperando o mínimo de jogadores (e1)
+Eu não estou pronto e estou esperando todos prontos (e2.1)
+Esperando todos prontos (e2.2)
+Jogo Começou (e3)
+Jogo Finalizou (e4)
+
+d1
+Tabela de transição
+Próximo Estado  | Condição
+e1              | Quando Conecta no Jogo
+
+e1
+Tabela de transição
+Próximo Estado  | Condição
+d1              | Quando disconecta do jogo
+e2.1              | Quando o número de jogadores for igual o mínimo.
+
+e2.1
+Tabela de transição
+Próximo Estado  | Condição
+e2.2            | Quando eu sinalizar que estou pronto
+e1              | Quando um jogador sair e o número de jogadores for menor que o mínimo.
+
+e2.2
+Tabela de transição
+Próximo Estado  | Condição
+e3              | Quando todos os jogadores sinalizar que estão prontos.
+e1              | Quando um jogador sair e o número de jogadores for menor que o mínimo.
+
+e3
+Tabela de transição
+Próximo Estado  | Condição
+e4              | Quando um jogador ganhar o número de rounds para ganhar ou quando o número de jogadores for igual a 1.
+
+e4
+Tabela de transição
+Próximo Estado  | Condição
+e1              | Passou o tempo de mostrar o resultado final.
+
+Atributos que representam os estados:
+
+d1
+isReady = false
+GameStarted = false
+numOfPlayers (< minimo)
+message = TANKS!
+m_ButtonIsReady = false
+
+e1
+isReady = false
+GameStarted = false
+numOfPlayers (< minimo)
+message = TANKS!\nWaiting Another Player To Connect
+m_ButtonIsReady = false
+
+e2.1
+numOfPlayers >= mínimo
+GameStarted = false
+isReady = false
+AllReady = false
+message = TANKS!\nYou are Ready ?
+m_ButtonIsReady = true
+
+e2.2
+numOfPlayers >= mínimo
+GameStarted = false
+isReady = true
+AllReady = false
+message = TANKS!\nWaiting Another Player
+m_ButtonIsReady = false
+
+e3
+numOfPlayers > 1
+GameStarted = true
+isReady = true
+AllReady = true
+message = Rounds 1 or Player Wins Round
+m_ButtonIsReady = false
+
+e4
+numOfPlayers >= 1
+GameStarted = true
+isReady = true
+AllReady = true
+message = Player Win Game
+m_ButtonIsReady = false
+
+
+
+
+
+
+
